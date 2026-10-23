@@ -1,0 +1,1714 @@
+/* ==========================================================================
+   PORTFÓLIO PESSOAL — GABRIEL SIMIONI
+   Direção Criativa: Editorial, Cinematográfica, Preto e Dourado
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Fonte Local Autoral — Brittany Signature
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Brittany Signature';
+  src: url('brittany_signature/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   Tokens de Design & Variáveis Customizadas
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Oficial (conforme identidade.md) */
+  --color-bg-deep: #090909;
+  --color-bg-warm: #151311;
+  --color-surface: #201C18;
+  --color-surface-translucent: rgba(32, 28, 24, 0.65);
+  
+  --color-gold: #D6B778;
+  --color-gold-light: #F2DFC0;
+  --color-gold-glow: rgba(214, 183, 120, 0.28);
+  --color-bronze: #987447;
+  --color-bronze-glow: rgba(152, 116, 71, 0.25);
+  
+  --color-ivory: #F4EFE6;
+  --color-text-secondary: #B7B0A5;
+  --color-wine: #542D3D;
+  --color-wine-subtle: rgba(84, 45, 61, 0.22);
+  
+  --color-border-subtle: rgba(214, 183, 120, 0.14);
+  --color-border-hover: rgba(214, 183, 120, 0.35);
+
+  /* Tipografia */
+  --font-title: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Espaçamentos e Layout */
+  --header-height: 80px;
+  --container-max-width: 1440px;
+  --content-padding: clamp(1.25rem, 4vw, 3.5rem);
+
+  /* Transições suaves */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.25s ease;
+  --transition-smooth: 0.6s var(--ease-cinematic);
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Estilos Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg-deep);
+  color: var(--color-ivory);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-deep);
+  color: var(--color-ivory);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Seleção de texto refinada */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-bg-deep);
+}
+
+/* --------------------------------------------------------------------------
+   Header Minimalista e Editorial
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 100;
+  pointer-events: none; /* Não interfere no hero */
+}
+
+.site-header__container {
+  max-width: var(--container-max-width);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  font-weight: 500;
+}
+
+.site-header__name {
+  color: var(--color-ivory);
+  letter-spacing: 0.14em;
+}
+
+.site-header__separator {
+  color: var(--color-bronze);
+  font-size: 0.75rem;
+}
+
+.site-header__tag {
+  color: var(--color-gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+}
+
+.site-header__status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+  background: rgba(21, 19, 17, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.status-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  box-shadow: 0 0 10px var(--color-gold);
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--header-height) + 1rem) var(--content-padding) 2.5rem;
+  background-color: var(--color-bg-deep);
+  overflow: hidden;
+}
+
+/* Iluminação e Profundidade Atmosférica */
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(110px);
+  will-change: transform, opacity;
+}
+
+.hero__glow--ambient {
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  width: clamp(380px, 60vw, 850px);
+  height: clamp(300px, 45vw, 650px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(214, 183, 120, 0.12) 0%,
+    rgba(152, 116, 71, 0.07) 40%,
+    rgba(84, 45, 61, 0.04) 70%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.hero__glow--spot {
+  bottom: 5%;
+  right: 15%;
+  width: clamp(260px, 35vw, 520px);
+  height: clamp(260px, 35vw, 520px);
+  background: radial-gradient(
+    circle at center,
+    rgba(152, 116, 71, 0.1) 0%,
+    rgba(84, 45, 61, 0.06) 50%,
+    transparent 75%
+  );
+  z-index: 1;
+}
+
+/* Vinheta e sutil textura para acabamento analógico e luxuoso */
+.hero__noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    transparent 40%,
+    rgba(9, 9, 9, 0.65) 100%
+  );
+  z-index: 2;
+}
+
+/* Container de Conteúdo */
+.hero__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Metadados / Badge de Programador */
+.hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: clamp(1.2rem, 2.5vw, 2.2rem);
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: 999px;
+  background: var(--color-surface-translucent);
+  border: 1px solid var(--color-border-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.hero__badge-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  box-shadow: 0 0 12px var(--color-gold);
+}
+
+.hero__role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+}
+
+.hero__context {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   Nome Principal — SIMIONI (Tipografia de Impacto Big Dreams Group)
+   -------------------------------------------------------------------------- */
+.hero__title-wrapper {
+  width: 100%;
+  overflow: visible;
+  margin-bottom: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+.hero__title {
+  font-family: var(--font-title);
+  font-size: clamp(3.8rem, 16vw, 13.5rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: clamp(0.04em, 0.08em, 0.12em);
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  margin: 0;
+  padding: 0.1em 0;
+  user-select: none;
+}
+
+.hero__title-row {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* Wrappers para split-text e animação de revelação de máscaras */
+.char-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.04em;
+}
+
+.char {
+  display: inline-block;
+  transform-origin: center bottom;
+  will-change: transform, opacity;
+  background: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    var(--color-ivory) 45%,
+    var(--color-gold-light) 85%,
+    var(--color-gold) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 6px 30px rgba(214, 183, 120, 0.15));
+}
+
+/* --------------------------------------------------------------------------
+   Apresentação Pessoal / Statement
+   -------------------------------------------------------------------------- */
+.hero__statement {
+  max-width: 780px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+}
+
+.hero__description {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.01em;
+}
+
+.hero__highlight {
+  color: var(--color-ivory);
+  font-weight: 500;
+  border-bottom: 1px solid rgba(214, 183, 120, 0.4);
+  padding-bottom: 1px;
+}
+
+.break-desktop {
+  display: inline;
+}
+
+/* --------------------------------------------------------------------------
+   Footer do Hero & Indicador de Continuidade (Scroll Cue)
+   -------------------------------------------------------------------------- */
+.hero__footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--transition-fast);
+}
+
+.hero__scroll-cue:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 6px;
+  border-radius: 4px;
+}
+
+.hero__scroll-cue:hover {
+  transform: translateY(3px);
+}
+
+.hero__scroll-track {
+  width: 1px;
+  height: 48px;
+  background: rgba(214, 183, 120, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__scroll-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--color-gold) 50%,
+    var(--color-ivory) 100%
+  );
+  animation: scroll-pulse 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scroll-pulse {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(220%);
+    opacity: 0;
+  }
+}
+
+.hero__scroll-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0.75;
+  font-weight: 500;
+  transition: opacity var(--transition-fast);
+}
+
+.hero__scroll-cue:hover .hero__scroll-text {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Seção Narrativa (Etapa 2 — Inspirada em Kinoria Studio)
+   -------------------------------------------------------------------------- */
+.narrative {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(4rem, 8vw, 7rem) var(--content-padding);
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-deep) 0%,
+    var(--color-bg-warm) 50%,
+    var(--color-bg-deep) 100%
+  );
+  overflow: hidden;
+}
+
+/* Atmosfera sutil de transição cromática */
+.narrative__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(450px, 70vw, 950px);
+  height: clamp(380px, 55vw, 750px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(84, 45, 61, 0.08) 0%,
+    rgba(152, 116, 71, 0.06) 45%,
+    transparent 75%
+  );
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.narrative__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 65vh;
+}
+
+/* Cabeçalho da Seção Narrativa */
+.narrative__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: clamp(2rem, 5vh, 4rem);
+}
+
+.narrative__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 500;
+}
+
+.narrative__counter {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 600;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  letter-spacing: 0.05em;
+}
+
+.narrative__counter-current {
+  color: var(--color-gold);
+  font-variant-numeric: tabular-nums;
+  transition: color var(--transition-fast);
+}
+
+.narrative__counter-divider,
+.narrative__counter-total {
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+}
+
+/* Palco de Palavras e Textos */
+.narrative__stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+  text-align: center;
+}
+
+/* Quando ativo com GSAP em desktop, os itens empilham-se para transição contínua */
+.narrative.js-pinned .narrative__stage {
+  display: grid;
+  grid-template-areas: "stage";
+  place-items: center;
+  min-height: 48vh;
+  gap: 0;
+}
+
+.narrative__item {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.narrative.js-pinned .narrative__item {
+  grid-area: stage;
+  will-change: transform, opacity;
+}
+
+.narrative__item-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.narrative__step-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+  margin-bottom: clamp(0.75rem, 1.8vh, 1.5rem);
+  font-weight: 600;
+}
+
+.narrative__word {
+  font-family: var(--font-title);
+  font-size: clamp(3.2rem, 11vw, 9.5rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: clamp(0.04em, 0.08em, 0.12em);
+  text-transform: uppercase;
+  margin: 0;
+  user-select: none;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: filter var(--transition-smooth);
+}
+
+/* Variações de cor e atmosfera conforme o tema da etapa (Kinoria inspired) */
+[data-theme="observo"] .narrative__word {
+  background-image: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    var(--color-ivory) 55%,
+    var(--color-text-secondary) 100%
+  );
+  filter: drop-shadow(0 4px 25px rgba(244, 239, 230, 0.1));
+}
+
+[data-theme="aprendo"] .narrative__word {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-ivory) 0%,
+    var(--color-gold-light) 50%,
+    var(--color-gold) 100%
+  );
+  filter: drop-shadow(0 4px 28px rgba(214, 183, 120, 0.16));
+}
+
+[data-theme="crio"] .narrative__word {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-gold-light) 0%,
+    var(--color-gold) 55%,
+    var(--color-bronze) 100%
+  );
+  filter: drop-shadow(0 4px 30px rgba(152, 116, 71, 0.2));
+}
+
+[data-theme="evoluo"] .narrative__word {
+  background-image: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    var(--color-gold-light) 40%,
+    var(--color-gold) 100%
+  );
+  filter: drop-shadow(0 4px 35px rgba(214, 183, 120, 0.28));
+}
+
+.narrative__caption {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+  color: var(--color-text-secondary);
+  max-width: 660px;
+  margin: clamp(1.25rem, 2.5vh, 2.2rem) auto 0;
+  line-height: 1.65;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+/* Indicador de Progresso da Narrativa */
+.narrative__progress {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  width: 100%;
+  margin-top: clamp(2rem, 4vh, 3.5rem);
+  padding-top: 1rem;
+}
+
+.narrative__progress-track {
+  width: 72px;
+  height: 2px;
+  background: rgba(214, 183, 120, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.narrative__progress-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-bronze), var(--color-gold));
+  transform: scaleX(0.25);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.narrative__progress-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   Seção Coisas sobre mim (Etapa 3 — Inspirada em Replika)
+   -------------------------------------------------------------------------- */
+.about {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(5rem, 9vw, 9rem) var(--content-padding);
+  background-color: var(--color-bg-deep);
+  overflow: hidden;
+}
+
+/* Atmosfera sutil em tons de bronze e champanhe */
+.about__glow {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  width: clamp(380px, 50vw, 720px);
+  height: clamp(380px, 50vw, 720px);
+  background: radial-gradient(
+    circle at center,
+    rgba(214, 183, 120, 0.07) 0%,
+    rgba(152, 116, 71, 0.04) 50%,
+    transparent 75%
+  );
+  filter: blur(130px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+/* Cabeçalho Editorial de Coisas sobre mim */
+.about__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 860px;
+}
+
+.about__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.about__title {
+  font-family: var(--font-title);
+  font-size: clamp(2.6rem, 5.8vw, 5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  color: var(--color-ivory);
+  margin-bottom: 1.5rem;
+}
+
+.about__bio {
+  font-family: var(--font-body);
+  font-size: clamp(1.08rem, 1.4vw, 1.35rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+}
+
+/* Grade de Cartões de Memória e Interesses (Replika inspired) */
+.about__cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.about-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 280px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform var(--transition-smooth), border-color var(--transition-fast), box-shadow var(--transition-smooth);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-border-hover);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(214, 183, 120, 0.08);
+}
+
+.about-card--featured {
+  background: linear-gradient(135deg, rgba(32, 28, 24, 0.95) 0%, rgba(21, 19, 17, 0.9) 100%);
+  border-color: rgba(214, 183, 120, 0.28);
+}
+
+.about-card--placeholder {
+  border: 1px dashed rgba(214, 183, 120, 0.25);
+  background: rgba(21, 19, 17, 0.45);
+}
+
+.about-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.about-card__category {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.about-card__badge {
+  font-size: 0.72rem;
+  color: #4ade80;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.about-card__badge--gold {
+  color: var(--color-gold);
+}
+
+.about-card__badge--slot {
+  color: var(--color-bronze);
+  font-style: italic;
+  font-size: 0.7rem;
+}
+
+.about-card__title {
+  font-family: var(--font-title);
+  font-size: clamp(1.35rem, 1.8vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-ivory);
+  margin-bottom: 0.85rem;
+}
+
+.about-card__text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.75rem;
+  font-weight: 300;
+}
+
+.about-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.about-card__tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(9, 9, 9, 0.65);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-ivory);
+}
+
+.about-card__tag--slot {
+  color: var(--color-bronze);
+  border-style: dashed;
+}
+
+/* Galeria de Projetos */
+.about__projects-wrapper {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about__projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: 1rem;
+}
+
+.about__projects-heading {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-ivory);
+  letter-spacing: 0.03em;
+}
+
+.about__projects-sub {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.about__projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  transition: transform var(--transition-smooth), border-color var(--transition-fast), box-shadow var(--transition-smooth);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-hover);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(214, 183, 120, 0.08);
+}
+
+.project-card--active {
+  border-color: rgba(214, 183, 120, 0.25);
+  background: linear-gradient(135deg, rgba(32, 28, 24, 0.95) 0%, rgba(21, 19, 17, 0.85) 100%);
+}
+
+.project-card--slot {
+  border: 1px dashed rgba(214, 183, 120, 0.25);
+  background: rgba(21, 19, 17, 0.4);
+}
+
+.project-card__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-card__status {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.project-card__status--slot {
+  color: var(--color-bronze);
+  font-style: italic;
+}
+
+.project-card__year {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.project-card__title {
+  font-family: var(--font-title);
+  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-ivory);
+  margin-bottom: 0.85rem;
+}
+
+.project-card__description {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.project-card__tech span {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(9, 9, 9, 0.6);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-ivory);
+}
+
+.tech-tag--placeholder {
+  color: var(--color-bronze) !important;
+  border-style: dashed !important;
+}
+
+/* --------------------------------------------------------------------------
+   Seção Contato & Encerramento (Etapa 4 — Café com Pai & Botões do Aluno)
+   -------------------------------------------------------------------------- */
+.contact {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(5rem, 9vw, 9rem) var(--content-padding) 3rem;
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-deep) 0%,
+    var(--color-bg-warm) 60%,
+    var(--color-bg-deep) 100%
+  );
+  overflow: hidden;
+}
+
+/* Atmosfera sutil de encerramento */
+.contact__glow {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(450px, 65vw, 900px);
+  height: clamp(350px, 45vw, 600px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(214, 183, 120, 0.08) 0%,
+    rgba(84, 45, 61, 0.05) 50%,
+    transparent 75%
+  );
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contact__container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+/* Cabeçalho de Contato */
+.contact__header {
+  max-width: 760px;
+}
+
+.contact__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.contact__title {
+  font-family: var(--font-title);
+  font-size: clamp(2.6rem, 5.8vw, 5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.02em;
+  color: var(--color-ivory);
+  margin-bottom: 1.25rem;
+}
+
+.contact__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+}
+
+/* --------------------------------------------------------------------------
+   Área dos 3 Botões de Contato (Instagram, TikTok, E-mail)
+   Efeito original inspirado no snippet do aluno:
+   Camada de fundo em gradiente, vidro translúcido, borda fina e rotação no hover
+   -------------------------------------------------------------------------- */
+.contact__channels {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact__channels-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.contact__buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.social-button {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  isolation: isolate;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.social-button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+.social-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Camada 1: Gradiente de Fundo que Rotaciona e Inclina */
+.social-button__bg {
+  position: absolute;
+  inset: -30%;
+  z-index: 1;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transform: rotate(0deg) scale(1);
+  will-change: transform;
+}
+
+.social-button[data-platform="instagram"] .social-button__bg {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  opacity: 0.85;
+}
+
+.social-button[data-platform="tiktok"] .social-button__bg {
+  background: linear-gradient(
+    135deg,
+    #050505 0%,
+    #00f2fe 50%,
+    #fe0979 100%
+  );
+  opacity: 0.9;
+}
+
+.social-button[data-platform="email"] .social-button__bg {
+  background: linear-gradient(
+    135deg,
+    var(--color-wine) 0%,
+    var(--color-bronze) 50%,
+    var(--color-gold) 100%
+  );
+  opacity: 0.9;
+}
+
+.social-button:hover .social-button__bg,
+.social-button:focus-visible .social-button__bg {
+  transform: rotate(28deg) scale(1.22);
+  opacity: 1;
+}
+
+/* Camada 2: Superfície de Vidro Translúcido com Borda Fina */
+.social-button__glass {
+  position: absolute;
+  inset: 2px;
+  border-radius: 12px;
+  background: rgba(21, 19, 17, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  z-index: 2;
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.social-button:hover .social-button__glass,
+.social-button:focus-visible .social-button__glass {
+  background: rgba(21, 19, 17, 0.45);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Camada 3: Ícone Central */
+.social-button__icon {
+  position: relative;
+  z-index: 3;
+  width: 24px;
+  height: 24px;
+  fill: #FFFFFF;
+  transition: transform 0.35s ease;
+  pointer-events: none;
+}
+
+.social-button:hover .social-button__icon {
+  transform: scale(1.12);
+}
+
+/* Feedback para destinos não configurados */
+.contact__channels-feedback {
+  min-height: 24px;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-gold);
+  transition: opacity 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Formulário de Contato Front-end
+   -------------------------------------------------------------------------- */
+.contact__form-wrapper {
+  max-width: 860px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  padding: clamp(2rem, 4vw, 3.25rem);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.form-row--split {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.form-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ivory);
+  font-weight: 500;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.95rem 1.15rem;
+  background: rgba(9, 9, 9, 0.75);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  color: var(--color-ivory);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(183, 176, 165, 0.45);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background: rgba(15, 13, 11, 0.9);
+  box-shadow: 0 0 16px rgba(214, 183, 120, 0.2);
+}
+
+.form-input.is-invalid,
+.form-textarea.is-invalid {
+  border-color: #f87171;
+  box-shadow: 0 0 12px rgba(248, 113, 113, 0.2);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-error {
+  font-size: 0.75rem;
+  color: #f87171;
+  min-height: 18px;
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.form-disclaimer {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 440px;
+}
+
+.disclaimer-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(214, 183, 120, 0.15);
+  color: var(--color-gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-right: 0.35rem;
+}
+
+.contact-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 100%);
+  color: var(--color-bg-deep);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.contact-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(214, 183, 120, 0.35);
+}
+
+.contact-submit-btn:focus-visible {
+  outline: 2px solid var(--color-ivory);
+  outline-offset: 4px;
+}
+
+.form-status {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: none;
+}
+
+.form-status.is-success {
+  display: block;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #86efac;
+}
+
+.form-status.is-error {
+  display: block;
+  background: rgba(248, 113, 113, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
+}
+
+/* --------------------------------------------------------------------------
+   Assinatura Manuscrita Revelada (Café com Pai)
+   -------------------------------------------------------------------------- */
+.contact__signature-block {
+  margin-top: clamp(2rem, 4vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(2rem, 4vw, 3.5rem) 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.signature-tagline {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.signature-writing-stage {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0;
+  user-select: none;
+}
+
+.signature-writing-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  line-height: 1;
+}
+
+.signature-text {
+  font-family: 'Brittany Signature', cursive, Georgia, serif;
+  font-size: clamp(3.8rem, 8.5vw, 6.8rem);
+  font-weight: 400;
+  color: var(--color-gold);
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  white-space: nowrap;
+  /* Mascaramento horizontal que revela o texto da esquerda para a direita */
+  clip-path: inset(-25% 100% -25% 0%);
+  will-change: clip-path;
+  filter: drop-shadow(0 4px 24px rgba(214, 183, 120, 0.28));
+}
+
+/* Ponta de luz / pena dourada que acompanha o traço enquanto a assinatura é escrita */
+.signature-pen-nib {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 14px 4px var(--color-gold);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  will-change: left, opacity;
+  z-index: 2;
+}
+
+.signature-flourish {
+  width: 100%;
+  max-width: 360px;
+  height: 28px;
+  overflow: visible;
+  margin-top: -0.65rem;
+}
+
+.signature-flourish path {
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  will-change: stroke-dashoffset;
+}
+
+.signature-caption {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-top: 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Rodapé do Portfólio
+   -------------------------------------------------------------------------- */
+.site-footer {
+  width: 100%;
+  padding-top: 3rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(214, 183, 120, 0.08);
+}
+
+.site-footer__container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.site-footer__text {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   Responsividade (Tablets e Celulares)
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  :root {
+    --header-height: 70px;
+  }
+
+  .site-header__status {
+    display: none; /* Simplifica o cabeçalho em telas menores para focar na marca */
+  }
+
+  .break-desktop {
+    display: none;
+  }
+
+  .hero__statement {
+    max-width: 90%;
+  }
+
+  .hero__context {
+    display: none;
+  }
+
+  .about__cards-grid,
+  .about__projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 540px) {
+  :root {
+    --header-height: 60px;
+  }
+
+  .hero {
+    padding-top: calc(var(--header-height) + 0.5rem);
+    padding-bottom: 2rem;
+  }
+
+  .hero__title {
+    font-size: clamp(3.2rem, 18vw, 5.2rem);
+    letter-spacing: 0.05em;
+  }
+
+  .hero__meta {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__badge {
+    padding: 0.35rem 0.95rem;
+  }
+
+  .hero__role {
+    font-size: 0.75rem;
+  }
+
+  .hero__description {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .hero__scroll-track {
+    height: 36px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Acessibilidade & Fallback (prefers-reduced-motion)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .status-indicator,
+  .hero__scroll-bar {
+    animation: none !important;
+  }
+
+  .char-wrap {
+    overflow: visible !important;
+  }
+
+  .char {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .hero__glow,
+  .narrative__glow {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .narrative.js-pinned .narrative__stage {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4rem !important;
+  }
+
+  .narrative__item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .narrative__progress-fill {
+    transform: scaleX(1) !important;
+  }
+
+  .about-card,
+  .project-card,
+  .social-button,
+  .social-button__bg,
+  .social-button__glass,
+  .social-button__icon {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .signature-text {
+    clip-path: inset(-25% 0% -25% 0%) !important;
+  }
+
+  .signature-pen-nib {
+    display: none !important;
+  }
+
+  .signature-flourish path {
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .narrative {
+    padding: 4rem var(--content-padding);
+  }
+
+  .narrative__stage {
+    gap: 3.5rem;
+  }
+
+  .narrative__word {
+    font-size: clamp(2.8rem, 14vw, 4.8rem);
+  }
+
+  .narrative__caption {
+    font-size: 0.98rem;
+  }
+
+  .narrative__progress {
+    justify-content: center;
+  }
+
+  .form-row--split {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .contact-submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
